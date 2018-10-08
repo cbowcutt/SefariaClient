@@ -2,7 +2,6 @@ require('https');
 var exports = module.exports = {};
 var BibleReferenceUrl = "sefaria.org"
 
-/api/texts/Ecclesiastes.5
 exports.MapToNumber = {
 	'א': 1,
 	'ב': 2,
@@ -33,10 +32,14 @@ exports.MapToNumber = {
 	'ץ': 90
 }
 
-exports.Gematria = (hebrewWord) => {
+exports.NumericalValue = (hebrewWord) => {
   var numericalValue = 0;
-  hebrewWord.split('').forEach.each((letter) => {
-	  numericalValue += exports.MapToNumber[Letter];
-  });
+  hebrewWord.split('')
+  	.forEach((letter) => {
+  	  if (letter in exports.MapToNumber)
+  	  {
+  	  		  numericalValue += exports.MapToNumber[letter];
+  	  }
+  	});
   return numericalValue;
-}
+};

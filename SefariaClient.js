@@ -8,7 +8,10 @@ exports.BibleVerse = (book, chapter, verse) => {
 exports.RequestChapter = async (book, chapter) => {
 	var options = {
 		uri: 'https://' + hostUrl + '/api/texts/' + book +'.' + chapter,
-		json: true
+		json: true,
+		headers: {
+			charset: "utf-8"
+		}
 	};
 	return await rp(options)
 		.then((responseJSON) => {
